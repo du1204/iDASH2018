@@ -1,0 +1,12 @@
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structure variant">
+##INFO=<ID=END,Number=1,Type=Integer,Description="End position of the variant described in this record">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+chr1	881627	.	G	A		.	.	SVTYPE=SNP;END=881628
+chr1	888659	.	T	C		.	.	SVTYPE=SNP;END=888660
+chr1	894573	.	G	A		.	.	SVTYPE=SNP;END=894574
+chr1	909238	.	G	C		.	.	SVTYPE=SNP;END=909239
+chr1	949608	.	G	A		.	.	SVTYPE=SNP;END=949609
+chr1	1062638	.	C	A		.	.	SVTYPE=SNP;END=1062639
+chr1	1178482	.	A	G		.	.	SVTYPE=SNP;END=1178483
+chr1	1178925	.	G	A		.	.	SVTYPE=SNP;END=1178926
+chr1	1269554	.	T	C		.	.	SVTYPE=SNP;END=1269555

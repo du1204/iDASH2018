@@ -1,0 +1,38 @@
+README file (2018.09.06 edited)
+
+How to compile?
+$ make all 
+
+How to run?
+ 
+$ ./IDASH2018 ../data/covariates.csv ../data/snpMat.txt 17 1500 50 20 30 40 3 4 4 7 0
+
+Explanation on each input:
+We have total 13 input arguments where the first two inputs are phenotype/genotype datasets.
+ 16		: logN
+ 1100		: logQ
+ 50		: logp
+ 20		: logc
+ 30,40,3,4	: Parameters for Bootstrapping
+ 4		: Iteration number of Fisher scoring
+ 7		: Degree of polynomial approximating sigmoid function
+ 0		: log_2(scale) // see Note2 below.
+
+
+
+Note1. Our last encrypted output is the square of Statistics. Note that the square of statistic has 1-1 correspondence with the absolute value of statistic (and hence to the p-value), i.e., the square of statistics has exactly same information with p-value.
+
+
+Note2. Our algorithm of calculation of inverse only holds for inputs in some fixed range. Inputs out of range can suffer tremendous error, and can even affect the result of the other inputs. Therefore, if the result has tremendous errors, we recommend to increase the covering range by increasing the log_2(scale) values in the argument. If we input 1,2, or 3 instead of 0 (default), the range increases to 2,2^2 or 2^3 times of the default. However, (relative) error of statistics also increases to that ratio.
+
+
+Note3. In case that the result is bad for new datasets even if you put 1,2 or 3 instead of 0 (default), we recommend to abandon the algorithm for calculating inverse, and just output the denominator and numerator seperately without the division process in the last step. To do this, please use testEnc_seperate function instead of testEnc function in IDASH2018.cpp. More precisely, commenting out the lines 48 ~ 70, and commenting in the lines 75 ~ 99.
+
+Note4. You may should control the number of fisher scoring iterations if the beta is not sufficiently updated. Our program outputs the value of beta for each iteration. So if beta still changes a lot at the last iteration, please increase the number of iterations (the 11-th input argument among total 13 input arguments).
+
+Note5. The repositories serkey and sercipher contain public keys for operations and ciphertexts, respectively. 
+
+Note6. We checked that the code works correctly for the given data set within 16GB memory.
+In the case that the code requires more than 16GB memory for a new data set, please decrease the number of threads to avoid memory overflow.
+To be precise, change the number of thread into 2 or 3 by changing the code as follows:
+e.g., SetNumThreads(4) -> SetNumThreads(2) in line 40 and 471 of EncGWAS.cpp.

@@ -1,0 +1,48 @@
+ls
+cd ..
+ls
+source("/Users/KimDuhyeong/Dropbox/Research/My Research/IDASH2018/release/logReg_importFile.r")
+source("/Users/KimDuhyeong/Dropbox/Research/My Research/IDASH2018/release/snpMat.txt")
+ls
+q()
+help()
+set.seed(2012)#
+n = 10000#
+m = 1000#
+k = 10#
+S = matrix(2*runif(n*m), n, m)#
+y = rnorm(n)#
+X0 = matrix(rnorm(n*k), n, k)#
+X = cbind(1, X0)
+t0 = proc.time()[1]#
+#
+b = rep(0,m)#
+for(i in 1:m){#
+  mod = lsfit(cbind(S[,i], X), y, intercept = F)#
+  b[i] = mod$coeff[1]#
+}
+t1 = proc.time()[1] - t0#
+msip = 1e-06 * n * m / t1#
+cat(sprintf("Speed: %2.1f Msips\n", msip))
+S_list = read.table("snpMat.txt", header=T)
+ls()
+source("/Users/KimDuhyeong/Dropbox/Research/My Research/IDASH2018/release/logReg_importFile.r")
+source("/Users/KimDuhyeong/Dropbox/Research/My Research/IDASH2018/release/snpMat.txt")
+source("/Users/KimDuhyeong/Dropbox/Research/My Research/IDASH2018/release/covariates.csv")
+source("/Users/KimDuhyeong/Dropbox/Research/My Research/IDASH2018/release/logReg_importFile.r")
+setwd("/Dropbox/Research/My_Research/IDASH2018")
+setwd("/Dropbox")
+getwd()
+setwd("/users/kimDuhyeong/Dropbox/Research/My_Research/IDASH2018/")
+X
+getwd()
+setwd("/Users/KimDuhyeong/Dropbox/Research/My_Research/IDASH2018/release")
+X
+X
+X=
+?
+q()
+ls
+ls
+getwd()
+gettext

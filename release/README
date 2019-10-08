@@ -1,0 +1,16 @@
+logisticRegress_importFile_2.r: derived from fast_covariates.r. PGP sample data rather than simulated data are imported as input data. usage: Rscript logisticRegress_importFile.r
+
+input:
+	1. covariates.csv (individual per row): col1 -- PGP human id 
+					     col2 -- disease/control condition 
+					     col3 -- age
+					     col4 -- height
+					     col5 -- weight
+	P.S. missing values in col3-5 are imputed by mean
+
+	2. snpMat.txt: matrix of genotypes derived from vcf files by buildMat.py (each SNP is label as chromosome_position)
+		       Each row presents an individual's genotype information: 1 means that the individual has the corresponding SNP, 0 otherwise. The order of individuals is the same as that in covariates.csv
+	P.S. original vcf files could be found under the directory of vcf/
+
+
+output: sensitivity and specificity of the method compared to GLM
